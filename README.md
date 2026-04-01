@@ -1,4 +1,4 @@
-<img src="Resources/ReadMeLogo.png?raw=true" alt="Header" width="60%"/>
-The main website for 'Team Forever'
+<img src="Resources/Logos/FiveNightsAtTeamForever.png?raw=true" alt="Header" width="60%"/>
+Are you ready... Forever?
 
-Created by Alexander (Allie / AlyStyle) Pinnell and Emma Sauve
+Website created by Alexander (Allie / AlyStyle) Pinnell and Emma Sauve
