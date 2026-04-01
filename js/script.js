@@ -1,0 +1,375 @@
+document.addEventListener("DOMContentLoaded", initializeSlider);
+
+
+var projectPopupDisplay = document.querySelector(".projectPopupDisplay");
+
+const closeButton = document.getElementById("closeButton")
+const slides = document.querySelectorAll(".slides img");
+const closeBtn = document.getElementById("closeButton");
+
+//project popup variables
+const projectPopupImage = document.getElementById("projectPopupImage");
+
+const projectAuthor = document.querySelector(".projectAuthor");
+const projectPromo = document.getElementById("projectPromo");
+const projectDesc = document.getElementById("projectDesc");
+const whoEnvolved = document.getElementById("whoEnvolved");
+const projectSiteLink = document.getElementById("projectSiteLink");
+const projectSocialLink = document.getElementById("projectSocialLink");
+
+let slideIndex = 0;
+let intervalId = null;
+
+//mobile menu
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navMenu");
+const navLink = document.querySelectorAll(".navLink");
+
+function initializeSlider(){
+    if (slides.length > 0){
+        slides[slideIndex].classList.add("displaySlide");
+        intervalId = setInterval(nextSlide, 5000);
+        console.log(intervalId);
+    }
+}
+
+function showSlide(index){
+    if(index >= slides.length){
+        slideIndex = 0;
+    }
+    else if(index < 0){
+        slideIndex = slides.length -1;
+    }
+
+    slides.forEach(slide => {
+        slide.classList.remove("displaySlide");
+    });
+
+    slides[slideIndex].classList.add("displaySlide");
+}
+
+function prevSlide(){
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, 5000);
+    slideIndex--;
+    showSlide(slideIndex);
+}
+
+function nextSlide(){
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, 5000);
+    slideIndex++;
+    showSlide(slideIndex);
+}
+
+// project popup code for text and images
+function projectPopup(projectid , projectimage) {
+    projectPopupImage.src = projectimage;
+
+    if (projectid === "3Air_Eukaryot") {
+        projectAuthor.innerText = "By Eukaryot";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/3AIR.png";
+        projectDesc.innerText = "Sonic 3 A.I.R. is a fan project aimed at making an accurate, reverse-engineered PC port of Sonic 3 & Knuckles. It includes a number of graphical improvements such as 16:9 widescreen (can be changed back to 4:3 or other aspect ratios; see Ultra-widescreen), consistent frame rate, 60 FPS in special stages, smooth sprite rotation, and mod support.";
+        whoEnvolved.innerText = "This project is a big insperation for our projects, go check it out!";
+        projectSiteLink.href = "https://sonic3air.org/";
+        projectSiteLink.innerText = "Project Site";
+        projectSocialLink.href = "https://bsky.app/profile/eukaryot.bsky.social";
+        projectSocialLink.innerText = "Bluesky";
+    }
+    if (projectid === "DuelofFates_ChaosDriveStudio") {
+        projectAuthor.innerText = "By Chaos Drive Studio";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/DoF.png";
+        projectDesc.innerText = "Sonic and the Duel of Fates is a 2D platformer built using the Retro Engine V4 Decompilation, featuring original sprites, levels, badniks, and an original soundtrack. The game follows Sonic and Shadow as they team up to stop a new threat to the world.";
+        whoEnvolved.innerText = "Led by ProdNW, Chaos Drive Studio includes members and contributions from Team Forever from the likes of AlyStyle and Jamesith!";
+        projectSiteLink.href = "https://chaosdrivestudio.com/sonic-and-the-duel-of-fates/";
+        projectSiteLink.innerText = "Project Site";
+        projectSocialLink.href = "https://bsky.app/profile/prodnw.bsky.social";
+        projectSocialLink.innerText = "ProdNW on Bluesky";
+    }
+    if (projectid === "Essence_TeamReDream") {
+        projectAuthor.innerText = "By Team ReDream";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/Essence.jpg";
+        projectDesc.innerText = "Sonic Essence is an original 2D Modern Sonic adventure built with the Retro Engine V4 Decompilation. It features completely original sprites, levels, badniks, and an original soundtrack! This project aims to push the potential of Retro Engine (V4) modding to show the fresh and new experiences the decompilation can offer!";
+        whoEnvolved.innerText = "Led by AlyStyle, Team ReDream includes members and contributions from Team Forever from the likes of Casteor573, Elspeth The Pict, KarlEmerald, Jamesith, and ProdNW!";
+        projectSiteLink.href = "https://www.youtube.com/@TeamReDream";
+        projectSiteLink.innerText = "Youtube";
+        projectSocialLink.href = "https://bsky.app/profile/teamredream.bsky.social";
+        projectSocialLink.innerText = "Bluesky";
+    }
+    if (projectid === "ManiaAddendum_KiaraGale") {
+        projectAuthor.innerText = "By Kiara Gale";
+        projectPromo.src = "Resources/Logos/3rdParty/ManiaAddendum_KiaraGale.png";
+        projectDesc.innerText = "";
+        whoEnvolved.innerText = "";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "";
+    }
+    if (projectid === "OriginsUltrafix_TeamUltrafix") {
+        projectAuthor.innerText = "By Team Ultrafix";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/Ultrafix.png";
+        projectDesc.innerText = "Sonic Origins Ultrafix is a mod that changes, fixes and adds to various parts of the collection (including its games, the collection menus, and all the other side modes) to bring you the ultimate Origins experience!";
+        whoEnvolved.innerText = "Both Cosmic Eterntiy and AlyStyle lead both teams, as well as both teams have contributed to each other's projects in the past!";
+        projectSiteLink.href = "https://www.youtube.com/@TeamUltrafix";
+        projectSiteLink.innerText = "Youtube";
+        projectSocialLink.href = "https://bsky.app/profile/teamultrafix.bsky.social";
+        projectSocialLink.innerText = "Bluesky";
+    }
+    if (projectid === "SonicStrangeDreamWorld"){
+        projectAuthor.innerText = "by DarkVampireDude";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/SDW.jpg";
+        projectDesc.innerText = "Strange Dream World is a reimagine of Sonic 1 with new graphics, colors, and layouts. Sonic is reliving his first adventure but in a different way than he remember. A colorful like but in a strange way, like a dream?? Where colors are different and badniks are more scarier than ever?! That's not how Sonic remember South Island like that! Could that mean Dr. Eggman be up to no good again? Guide Sonic in this new dream world adventure where anything can happen!";
+        whoEnvolved.innerText = "A mod by DarkVampireDude, one of Team Forever's artists!";
+        projectSiteLink.href = "https://gamebanana.com/mods/150213";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "https://discord.gg/ncvAR4WStr";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "AmyGalore"){
+        projectAuthor.innerText = "by Team Galore";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/AmyGalore.png";
+        projectDesc.innerText = "Sonic 3 AIR's most customizable version of Amy Rose, brought to the scene by Team Galore! Many sprite styles, many movesets, and so much more packed into a single mod!";
+        whoEnvolved.innerText = "Some members of Team Forever have contributed to this mod, including AlyStyle and nabbup, and we are also personally big fans of the team's work!";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "MetalMadness"){
+        projectAuthor.innerText = "by Team Galore";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/MetalMadness.png";
+        projectDesc.innerText = "Team Galore's Metal Sonic brings him to limelight! Customize his paintjob and abilities to make the most out of his Angel Island simulation.";
+        whoEnvolved.innerText = "Some members of Team Forever have contributed to this mod, including AlyStyle and nabbup, and we are also personally big fans of the team's work!";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "DuoMania"){
+        projectAuthor.innerText = "by Team Galore";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/DuoMania.png";
+        projectDesc.innerText = "Mighty and Ray come back to Angel Island after their time in Sonic Mania Plus to have fun! Team Galore's take on the duo brings customizable movesets inspired by different fangames and non-Sonic games for Mighty and Ray!";
+        whoEnvolved.innerText = "Some members of Team Forever have contributed to this mod, including AlyStyle and nabbup, and we are also personally big fans of the team's work!";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "MarioMayhem"){
+        projectAuthor.innerText = "by Team Galore";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/MarioMayhem.png";
+        projectDesc.innerText = "Team Galore bring Mario and Luigi to Angel Island with gameplay as close to real Mario as it can get! Traverse through the original environments with all-new gameplay and mechanics pulled from the Mario series, using existing mechanics with the plumbers' arsenal to work your way around the game!";
+        whoEnvolved.innerText = "Some members of Team Forever have contributed to this mod, including AlyStyle and nabbup, and we are also personally big fans of the team's work!";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "HorrorPack"){
+        projectAuthor.innerText = "by Casteor573";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/HorrorPack.jpg";
+        projectDesc.innerText = "The S1F Horror Pack is a horror mod combines two of my previous mods Slenderman in S1F and FNAF in S1F into one pack! Also adds some new content too.";
+        whoEnvolved.innerText = "Created by Casteor573, this project also features contributions from other Team Forever members from the likes of AlyStyle, KarlEmerald, MattM4nia, and WorksOfMagic!";
+        projectSiteLink.href = "https://gamebanana.com/mods/635073";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "https://youtu.be/bx4IWyDeXF0";
+        projectSocialLink.innerText = "Trailer";      
+    }
+    if (projectid === "SMBR"){
+        projectAuthor.innerText = "by ???";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/SMBR.png";
+        projectDesc.innerText = "";
+        whoEnvolved.innerText = "";
+        projectSiteLink.href = "";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "";
+        projectSocialLink.innerText = "Discord";
+    }
+    if (projectid === "MegamixMania"){
+        projectAuthor.innerText = "by Team Megamix Mania";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/MegamixMania.jpg";
+        projectDesc.innerText = "Sonic Megamix Mania is a fan-made modification for Sonic Mania Plus that aims to carry the torch of the discontinued ROM hack known as “Sonic the Hedgehog Megamix”. Megamix Mode adapts concepts from the ROM hack combined with the team's own vision bringing a unique experience built upon the foundation of the original. Classic Mode is a faithful remake of the content from “V.4.0b” of the ROM hack that offers a familiar experience with a fresh coat of paint. Sonic Megamix Mania offers beginner friendly and challenging experiences for old and new fans alike.";
+        whoEnvolved.innerText = "Current members of the team, including SnowballThePuppy and KiaraGale, contributed to this project! Legacy members of the team (Burrotis, RetroForever and Louplayer) contributed as well, plus we are also personally big fans of the team's work!";
+        projectSiteLink.href = "https://sonicmegamixmania.github.io/#/";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "https://bsky.app/profile/megamixmania.bsky.social";
+        projectSocialLink.innerText = "Bluesky";
+    }
+    if (projectid === "SMBR"){
+        projectAuthor.innerText = "by JHDev2006";
+        projectPromo.src = "Resources/Home/ThirdParty/Thumbnails/SMBR.png";
+        projectDesc.innerText = "A Remake / Celebration of the original 'Super Mario Bros.' games. Features new levels, custom modes, new characters, alongside a full level editor / custom level system!";
+        whoEnvolved.innerText = "";
+        projectSiteLink.href = "https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public";
+        projectSiteLink.innerText = "Download";
+        projectSocialLink.href = "https://discord.com/invite/A68uRsnja3";
+        projectSocialLink.innerText = "Discord";
+    }
+}
+
+function closeProjectPopup() {
+    projectPopupDisplay.classList.remove("active");
+}
+
+document.querySelectorAll(".projectInfo").forEach(function (button) {
+	button.addEventListener("click", function () {
+        // Retrieving attributes from the clicked button
+        var projectid = this.getAttribute("projectid");
+        // grab image in button
+        var projectimage = this.querySelector("img").src;
+        
+        // print to console
+        console.log("Project ID: " + projectid);
+        console.log("Project Image: " + projectimage);
+        projectPopup(projectid, projectimage);
+
+        projectPopupDisplay.classList.add("active");
+
+	});
+});
+
+document.querySelectorAll(".projectInfo-Alt").forEach(function (button) {
+	button.addEventListener("click", function () {
+        // Retrieving attributes from the clicked button
+        var projectid = this.getAttribute("projectid");
+        // grab image in button
+        var projectimage = this.querySelector("img").src;
+        
+        // print to console
+        console.log("Project ID: " + projectid);
+        console.log("Project Image: " + projectimage);
+        projectPopup(projectid, projectimage);
+
+        projectPopupDisplay.classList.add("active");
+
+	});
+});
+
+if (closeButton) closeButton.addEventListener("click", closeProjectPopup);
+if (projectPopupDisplay) projectPopupDisplay.addEventListener("click", function(event) {
+    if (event.target === projectPopupDisplay) {
+        closeProjectPopup();
+    }
+});
+
+//hamburger menu
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    document.querySelector(".menu-overlay").classList.toggle("active");
+});
+
+navLink.forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    document.querySelector(".menu-overlay").classList.remove("active");
+}))
+
+document.querySelector(".menu-overlay").addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    document.querySelector(".menu-overlay").classList.remove("active");
+});
+
+const video = document.getElementById("bgVideo");
+
+if (video) {
+    video.addEventListener("playing", () => {
+        video.playbackRate = 0.3;
+    });
+}
+
+const group = document.getElementById("logoGroup");
+if (group) {
+    const items = Array.from(group.children);
+
+    if (group.getAttribute("data-random") !== "noRandom") {
+        for (let i = items.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
+        }
+    }
+
+    group.innerHTML = "";
+    items.forEach(item => group.appendChild(item));
+
+    items.forEach(item => {
+    const clone = item.cloneNode(true);
+    group.appendChild(clone);
+    });
+
+    let offset = 0;
+    let speed = 0;
+    let maxSpeed = 10;
+    const acceleration = 0.5;
+    let hovering = false;
+
+    function scrollLoop() {
+        const isPopupVisible = projectPopupDisplay && projectPopupDisplay.classList.contains("active");
+
+        const paused = hovering || isPopupVisible;
+
+        if (!paused) {
+            speed = Math.min(speed + acceleration, maxSpeed);
+        } else {
+            speed = Math.max(speed - acceleration, 0);
+        }
+
+        offset -= speed;
+
+        if (Math.abs(offset) >= group.scrollWidth / 2) {
+            offset = 0;
+        }
+        group.style.transform = `translate3d(${offset}px, 0, 0)`;
+
+        requestAnimationFrame(scrollLoop);
+    }
+    scrollLoop();
+
+    group.parentElement.addEventListener("mouseenter", () => {
+        hovering = true;
+    });
+    group.parentElement.addEventListener("mouseleave", () => {
+        hovering = false;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("fadeOverlay");
+    const links = document.querySelectorAll(".navLink, .slides a");
+    links.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const target = this.href;
+
+            overlay.classList.remove("fade-out");
+
+            setTimeout(() => {
+                window.location.href = target;
+            }, 400);
+        });
+    });
+});
+
+window.addEventListener("load", () => {
+    const overlay = document.getElementById("fadeOverlay");
+    setTimeout(() => {
+        overlay.classList.add("fade-out");
+    }, 50);
+});
+
+function versionNumber() {
+    const ver = document.getElementById('versionNumber');
+    if (ver){
+        const year = '2026';
+        const month = '03';
+        const day = '31';
+        const time = '0709p';
+
+        const version = `0.1.${year}${month}${day}.${time}`;
+        ver.innerText = version;
+    }
+}
+document.addEventListener("DOMContentLoaded", versionNumber);
