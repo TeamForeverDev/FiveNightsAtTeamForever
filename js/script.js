@@ -364,9 +364,9 @@ function versionNumber() {
     const ver = document.getElementById('versionNumber');
     if (ver){
         const year = '2026';
-        const month = '03';
-        const day = '31';
-        const time = '0709p';
+        const month = '04';
+        const day = '02';
+        const time = '0937a';
 
         const version = `0.1.${year}${month}${day}.${time}`;
         ver.innerText = version;
